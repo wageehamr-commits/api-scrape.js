@@ -3,26 +3,34 @@ import chromium from "@sparticuz/chromium-min";
 
 export default async function handler(req, res) {
   const { url } = req.query;
-  if (!url) return res.status(400).send("Missing URL");
+  if (!url) {
+    return res.status(400).send("Missing URL");
+  }
 
   try {
+    const executablePath = await chromium.executablePath();
+
     const browser = await puppeteer.launch({
       args: chromium.args,
       defaultViewport: chromium.defaultViewport,
-      executablePath: await chromium.executablePath(),
+      executablePath,
       headless: chromium.headless,
+      ignoreHTTPSErrors: true,
     });
 
     const page = await browser.newPage();
     await page.goto(url, { waitUntil: "networkidle2", timeout: 60000 });
+
     const html = await page.content();
     await browser.close();
 
     res.setHeader("Content-Type", "text/html; charset=utf-8");
     res.status(200).send(html);
   } catch (err) {
-    res.status(500).send("Error: " + err.message);
+    console.error(err);
+    res.status(500).send("Error running Puppeteer: " + err.message);
   }
 }
+
 
 
