@@ -2,7 +2,7 @@
   "functions": {
     "api/*.js": {
       "runtime": "nodejs20.x",
-      "includeFiles": "node_modules/@sparticuz/chromium-min/**/*"
+      "includeFiles": "node_modules/@sparticuz/chromium/**/*"
     }
   }
 }
