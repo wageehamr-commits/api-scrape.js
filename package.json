@@ -1,9 +1,9 @@
 {
-  "name": "qnb-puppeteer-scraper",
+  "name": "qnb-scraper",
   "version": "1.0.0",
   "type": "module",
   "dependencies": {
-    "@sparticuz/chromium": "^119.0.0",
-    "puppeteer-core": "^23.3.0"
+    "puppeteer-core": "^23.3.0",
+    "@sparticuz/chromium": "^119.0.0"
   }
 }
