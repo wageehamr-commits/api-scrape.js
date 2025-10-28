@@ -16,14 +16,13 @@ export default async function handler(req, res) {
 
     const page = await browser.newPage();
     await page.goto(url, { waitUntil: "networkidle2", timeout: 60000 });
-
     const html = await page.content();
     await browser.close();
 
     res.setHeader("Content-Type", "text/html; charset=utf-8");
     res.status(200).send(html);
   } catch (err) {
-    console.error("Puppeteer error:", err);
+    console.error(err);
     res.status(500).send("Error running Puppeteer: " + err.message);
   }
 }
