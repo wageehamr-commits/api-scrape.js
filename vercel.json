@@ -1,8 +1,7 @@
 {
   "functions": {
     "api/*.js": {
-      "runtime": "nodejs20.x",
-      "includeFiles": ["node_modules/@sparticuz/chromium/bin/**"]
+      "runtime": "nodejs20.x"
     }
   }
 }
