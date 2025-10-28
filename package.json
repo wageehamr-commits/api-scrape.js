@@ -1,5 +1,5 @@
 {
-  "name": "qnb-scraper",
+  "name": "api-scrape.js",
   "version": "1.0.0",
   "type": "module",
   "dependencies": {
