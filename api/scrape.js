@@ -7,20 +7,17 @@ export default async function handler(req, res) {
     return;
   }
 
-  try {
-    const browser = await puppeteer.launch({
-      headless: true,
-      args: ["--no-sandbox", "--disable-setuid-sandbox"],
-    });
+  const browser = await puppeteer.launch({
+    headless: true,
+    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+  });
 
-    const page = await browser.newPage();
-    await page.goto(url, { waitUntil: "networkidle2", timeout: 60000 });
-    const html = await page.content();
-    await browser.close();
+  const page = await browser.newPage();
+  await page.goto(url, { waitUntil: "networkidle2", timeout: 60000 });
+  const html = await page.content();
+  await browser.close();
 
-    res.setHeader("Content-Type", "text/html; charset=utf-8");
-    res.status(200).send(html);
-  } catch (err) {
-    res.status(500).send("Error: " + err.message);
-  }
+  res.setHeader("Content-Type", "text/html; charset=utf-8");
+  res.status(200).send(html);
 }
+
