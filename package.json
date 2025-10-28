@@ -1,5 +1,5 @@
 {
-  "name": "vercel-puppeteer-scraper",
+  "name": "qnb-puppeteer-scraper",
   "version": "1.0.0",
   "type": "module",
   "dependencies": {
@@ -7,4 +7,3 @@
     "@sparticuz/chromium-min": "^119.0.0"
   }
 }
-
